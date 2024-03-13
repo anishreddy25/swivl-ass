@@ -145,7 +145,7 @@ app.post("/user", async (request,response)=>{
             '{{EMAIL}}':email
         }
         html = html.replace(/{{FIRSTNAME}}|{{LASTNAME}}|{{PHONENUMBER}}|{{EMAIL}}/gi,(matched)=>{return mapObj[matched]});
-        pdf.create(html,options).toFile('./invoice.pdf',function(err,resp){
+        pdf.create(html,options).toFile('./card.pdf',function(err,resp){
             if(err){
                 console.log(err);
             }else{
@@ -153,7 +153,7 @@ app.post("/user", async (request,response)=>{
             }
         })
 
-    const filePath = path.join(__dirname, "invoice.pdf");
+    const filePath = path.join(__dirname, "card.pdf");
         response.send(filePath)
     }else{
     response.send("User already exists");
